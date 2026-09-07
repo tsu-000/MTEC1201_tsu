@@ -1,3 +1,6 @@
+//tsu F
+//Daisy
+//I plan to explore the theme of like floral nature? this is the first piece as I thought it would be a shape that isn't hard to execute through p5js 
 function setup() {
   createCanvas(1200, 1200);
   colorMode(RGB, 255)
@@ -5,12 +8,12 @@ function setup() {
 
 function draw() {
   background(181, 243, 255); //sky blue background color
-  //leaves
+  //leaves & stem
   fill(142, 217, 116);
   noStroke();
   quad (550,680,600,850, 500,900,450,850);
   quad (650,680,750,850,700,900,600,850);
-  rect (600,600,20,600);
+  rect (600,600,20,600); //stem
   //petals
   stroke(249, 236, 255);
   strokeWeight(40);
