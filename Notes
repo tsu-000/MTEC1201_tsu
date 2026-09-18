@@ -2,3 +2,44 @@ Do sketch reviews do not forget!!!
 
 https://openprocessing.org/@kfahn/2781279
 https://openprocessing.org/@u110137/2855132
+
+
+9/18
+guhvreabhh ææ
+
+another p5js variable 
+  mouseX, mouseY the X and Y positions of the mouse the point is at the pointy tip of the cursor 
+  pmouseX, pmouseY previous mouse placement where they are the last time the loop goes,
+  function mousePressed () { the stuff inside of here runs whenever someone clicks the mouse}
+
+  keyPressed() {same as mouse pressed but w a key;
+key = variable that is the key that is pressed 
+key press does not continue running as the key is held down 
+
+
+--------------------------
+const cS = 600;
+ let rectW = 100;
+  let rectH = 50;
+  let rectY = 0;
+  let rectX = cS/2 - rectW/2;
+
+
+function setup() {
+  createCanvas(cS, cS * 1.5);
+
+  rectW =200;
+  rectH = 50;
+  rectY = 0;
+  rectX = cS/2 - rectW/2 
+}
+
+function draw() {
+  background (240,240,255);
+  
+  rect(rectX, rectY, rectW, rectH);
+  rect = frameCount % 200; 
+  rectX = cS/2 - rectW/2;
+
+  print ("frameCount", frameCount);
+}
