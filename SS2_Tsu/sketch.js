@@ -1,4 +1,7 @@
-
+//Tsu F
+//Pollinator 
+//The floral theme is continuing with the flower and I have the bee to come pollinate it and helpo it grow
+//move mouse to control the bee, and click to make the flower grow
 
 //ellipse Width
 let eW=10;
