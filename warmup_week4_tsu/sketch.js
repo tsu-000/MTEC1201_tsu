@@ -1,3 +1,6 @@
+//tsu week 4 warmup
+//line that stretches and shrinks around center based on mouse position
+
 function setup() {
     createCanvas(400, 400);
 }
