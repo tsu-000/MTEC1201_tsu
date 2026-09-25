@@ -3,14 +3,16 @@
 
 function setup() {
     createCanvas(400, 400);
+     background(220);
 }
 
 function draw() {
-    background(220);
+   
     stroke(183, 134, 245);
-    strokeWeight(15);
+    strokeWeight(1);
     line(200,200,mouseX,mouseY);
-    line(200,200,mouseX+200,mouseY+200);
-    line(200,200,mouseX-200,mouseY-200);
+    
+   
+
 
 }
