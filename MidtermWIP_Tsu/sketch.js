@@ -18,7 +18,10 @@ function draw() {
 if (introScene == 0){
   drawIntro();
 }
-  bee();
+else if (introScene == 1){
+  drawGame();
+}
+  
 
 }
 
@@ -40,11 +43,31 @@ function bee (){
   circle (pmouseX, pmouseY, 5);
 }
 
+function hills(){
+  background(205, 235, 247);
+  //hills for background
+  noStroke();
+  fill(128, 207, 116);
+ellipse (50,400,400,300);
+  fill(130, 227, 99);
+  ellipse (350,400,400,300);
+}
+
 function drawIntro(){
   textSize(50);
   fill(0, 0, 0);
   textAlign(CENTER);
-  text("Welcome to Bee Game!", cSW/2, cSH/2-100);
+  text("gametitle placeholder", cSW/2, cSH/2-100);
   textSize(30);
-  text("Click to start", cSW/2, cSH/2);
+  text("press s key to start", cSW/2, cSH/2);
+}
+
+if (keyIsPressed && key == 's') {
+  introScene = 1;
+}
+
+
+function drawGame(){
+  hills();
+  bee();
 }
