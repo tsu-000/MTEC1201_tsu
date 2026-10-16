@@ -1,8 +1,6 @@
 //Tsu F
 //Pollinator 
-//The floral theme is continuing with the flower and I have the bee to come pollinate it and helpo it grow
-//move mouse to control the bee, and click to make the flower grow
-
+//Making my second short study apply the conditional statement to the flower and bee. The flower will grow when the mouse is pressed and the bee will follow the mouse.
 //ellipse Width
 let eW=10;
 
