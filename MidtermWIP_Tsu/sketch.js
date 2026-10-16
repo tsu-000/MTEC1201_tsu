@@ -3,7 +3,8 @@
 let cSH = 600;
 let cSW = 800;
 let introScene = 0;
-
+let beeX = cSW/4;
+let beeY = cSH/4;
 
 
 
@@ -14,33 +15,51 @@ function setup() {
 
 function draw() {
   background(220);
-
+/* 
 if (introScene == 0){
   drawIntro();
 }
-else if (introScene == 1){
+if (introScene == 1){
   drawGame();
 }
-  
-
+ */
+  drawGame();
 }
 
 
 function bee (){
+  //this arrowkey movement code was taken from the p5.js reference page for keyIsDown() 
+  if (keyIsDown(LEFT_ARROW) === true) {
+    beeX -= 3;
+  }
+
+  if (keyIsDown(RIGHT_ARROW) === true) {
+    beeX += 3;
+  }
+
+  if (keyIsDown(UP_ARROW) === true) {
+    beeY  -= 3;
+  }
+
+  if (keyIsDown(DOWN_ARROW) === true) {
+    beeY += 3;
+  }
+
   stroke(132, 202, 235);
   strokeWeight(3);
   fill (171, 249, 255);
-  circle (pmouseX-10,pmouseY-20,15)
-  circle (pmouseX+10,pmouseY-20,15)
+  circle (beeX-10,beeY-20,15)
+  circle (beeX+10,beeY-20,15)
   fill (255, 239, 119);
   stroke (0,0,0);
   strokeWeight (5);
-  circle( pmouseX, pmouseY, 30);
+  circle( beeX, beeY, 30);
   fill (0,0,0);
-  circle (pmouseX, pmouseY, 10);
+  circle (beeX, beeY, 10);
   noStroke();
   fill (255, 239, 119);
-  circle (pmouseX, pmouseY, 5);
+  circle (beeX, beeY, 5);
+  
 }
 
 function hills(){
@@ -48,12 +67,17 @@ function hills(){
   //hills for background
   noStroke();
   fill(128, 207, 116);
-ellipse (50,400,400,300);
+ellipse (cSW/3,600,800,300);
   fill(130, 227, 99);
-  ellipse (350,400,400,300);
+  ellipse (cSW*2/3,600,800,300);
 }
 
-function drawIntro(){
+function stems () {
+   fill (52, 150, 58);
+  rect(cSW*3/4,cSH-300,10,300);
+
+}
+/* function drawIntro(){
   textSize(50);
   fill(0, 0, 0);
   textAlign(CENTER);
@@ -64,10 +88,11 @@ function drawIntro(){
 
 if (keyIsPressed && key == 's') {
   introScene = 1;
-}
+} */
 
 
 function drawGame(){
   hills();
   bee();
+  stems();
 }
