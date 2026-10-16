@@ -28,6 +28,9 @@ function drawScene0() {
 background(255, 0, 0);
 fill (0,0,255);
 circle(width/2, height/2, 100);
+ textFont('Courier New');
+  textSize(24);
+  text('press mouse to change scene', 35, 55);
 
 
 }
@@ -36,4 +39,7 @@ function drawScene1() {
 background(0, 0, 255);  
 fill(255, 0, 0);
 circle(width/2, height/2, 100);
+ textFont('Courier New');
+  textSize(24);
+  text('press mouse to change scene', 35, 55);
 }
