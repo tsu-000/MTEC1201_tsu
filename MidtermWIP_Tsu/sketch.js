@@ -7,8 +7,15 @@ let beeX = cSW/4;
 let beeY = cSH/4;
 let flufffont;
 let plantfont;
-
-
+let elW = 5;
+let elH = 5;
+let currentTime = 0;
+let fade=255;
+let timer =7000;
+let fadeAmount = 1;
+let mousePositionX;
+let mousePositionY;
+let isPlaying = false;
 
 
 
@@ -26,31 +33,33 @@ function setup() {
 
 function draw() {
   background(220);
-/* 
+
 if (introScene == 0){
   drawIntro();
 }
 if (introScene == 1){
   drawGame();
 }
- */
-  drawGame();
+ 
 }
 
 //intro screen code but im having trouble getting it to work properly 
 
-/* function drawIntro(){
+function drawIntro(){
   textSize(50);
   fill(0, 0, 0);
+  textFont(plantfont);
   textAlign(CENTER);
-  text("gametitle placeholder", cSW/2, cSH/2-100);
+  text("GAMETITLE PLACEHOLDER", cSW/2, cSH/2-100);
   textSize(30);
-  text("press s key to start", cSW/2, cSH/2);
+  text("PRESS *S* TO START", cSW/2, cSH/2);
 }
 
-if (keyIsPressed && key == 's') {
-  introScene = 1;
-} */
+function keyPressed() {
+  if (key === 's') {
+    introScene = 1;
+  }
+} 
 
 
 function bee (){
@@ -71,6 +80,8 @@ function bee (){
     beeY += 3;
   }
 
+  push();
+
   stroke(132, 202, 235);
   strokeWeight(3);
   fill (171, 249, 255);
@@ -85,36 +96,64 @@ function bee (){
   noStroke();
   fill (255, 239, 119);
   circle (beeX, beeY, 5);
-  
+  pop();
 }
 
 function hills(){
   background(205, 235, 247);
   //hills for background
+  push();
   noStroke();
   fill(128, 207, 116);
 ellipse (cSW/3,600,800,300);
   fill(130, 227, 99);
   ellipse (cSW*2/3,600,800,300);
+  pop();
 }
 
 function stems () {
+  push();
+  noStroke();
    fill (52, 150, 58);
-  rect(cSW*3/4,cSH-300,10,300);
+  rect(cSW*3/4,cSH-200,10,300);
+  rect(cSW*1/4,cSH-200,10,300);
+  rect(cSW*1/2,cSH-300,10,300);
+  pop();
 
 }
 
-
+function bulb (){
+  push();
+  fill (52, 150, 58);
+  noStroke();
+  ellipseMode(CENTER)
+  ellipse (cSW*3/4,cSH-200,elW,elH);
+  ellipse (cSW*1/4,cSH-200,elW,elH);
+  ellipse (cSW*1/2,cSH-300,elW,elH);
+  pop();
+}
 
 
 
 function instructions(){
-  textSize(24);
-  fill(240, 206, 151);
-  stroke(255,255,255);
+  textSize(30);
+  currentTime = millis();
+  push();
+  textAlign(LEFT);
+  fill(255, 206, 151, fade);
+  stroke(255,255,255, fade);
   strokeWeight(3);
   textFont(flufffont);
   text("Use the arrow keys to move the bee around the screen", 50, cSH/2-100);
+  text("Click the top of the stem to make the flower grow", 50, cSH/2-150);
+  
+  if (currentTime> timer) 
+{
+  print(fade);
+  print (currentTime);
+  fade -= fadeAmount;
+   }
+   pop();
 }
 
 function drawGame(){
@@ -123,19 +162,16 @@ function drawGame(){
   bee();
   stems();
 
-  //taken from p5js boolean reference page
-  //i want the text to disappear when the player starts moving the bee, but i can't figure out how to get it to work properly.
- /*  if (isPlaying === false) {
-    instructions();
-   }
-  
-  function keyPressed() {
-  if (key === LEFT_ARROW || key === RIGHT_ARROW || key === UP_ARROW || key === DOWN_ARROW) {
-    isPlaying = true;
-  } */
-
   instructions();
+  bulb();
+
+   
 }
-
-
+if (mouseX==mousePositionX && mouseY==mousePositionY){
+  mousePositionX= cSW*3/4+-20;
+  mousePositionY= cSH-200+-20;
+  elW += 5;
+  elH += 5;
+}
   
+
