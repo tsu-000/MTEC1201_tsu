@@ -37,6 +37,21 @@ if (introScene == 1){
   drawGame();
 }
 
+//intro screen code but im having trouble getting it to work properly 
+
+/* function drawIntro(){
+  textSize(50);
+  fill(0, 0, 0);
+  textAlign(CENTER);
+  text("gametitle placeholder", cSW/2, cSH/2-100);
+  textSize(30);
+  text("press s key to start", cSW/2, cSH/2);
+}
+
+if (keyIsPressed && key == 's') {
+  introScene = 1;
+} */
+
 
 function bee (){
   //this arrowkey movement code was taken from the p5.js reference page for keyIsDown() 
@@ -91,18 +106,8 @@ function stems () {
 
 
 
-/* function drawIntro(){
-  textSize(50);
-  fill(0, 0, 0);
-  textAlign(CENTER);
-  text("gametitle placeholder", cSW/2, cSH/2-100);
-  textSize(30);
-  text("press s key to start", cSW/2, cSH/2);
-}
 
-if (keyIsPressed && key == 's') {
-  introScene = 1;
-} */
+
 function instructions(){
   textSize(24);
   fill(240, 206, 151);
@@ -117,7 +122,9 @@ function drawGame(){
   hills();
   bee();
   stems();
-  
+
+  //taken from p5js boolean reference page
+  //i want the text to disappear when the player starts moving the bee, but i can't figure out how to get it to work properly.
  /*  if (isPlaying === false) {
     instructions();
    }
