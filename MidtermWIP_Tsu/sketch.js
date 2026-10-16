@@ -5,6 +5,17 @@ let cSW = 800;
 let introScene = 0;
 let beeX = cSW/4;
 let beeY = cSH/4;
+let flufffont;
+let plantfont;
+
+
+
+
+
+function preload() {
+  flufffont = loadFont('Fonts/Fluff.ttf');
+  plantfont = loadFont('Fonts/Plant.ttf');
+}
 
 
 
@@ -77,6 +88,9 @@ function stems () {
   rect(cSW*3/4,cSH-300,10,300);
 
 }
+
+
+
 /* function drawIntro(){
   textSize(50);
   fill(0, 0, 0);
@@ -89,10 +103,32 @@ function stems () {
 if (keyIsPressed && key == 's') {
   introScene = 1;
 } */
-
+function instructions(){
+  textSize(24);
+  fill(240, 206, 151);
+  stroke(255,255,255);
+  strokeWeight(3);
+  textFont(flufffont);
+  text("Use the arrow keys to move the bee around the screen", 50, cSH/2-100);
+}
 
 function drawGame(){
+  
   hills();
   bee();
   stems();
+  
+ /*  if (isPlaying === false) {
+    instructions();
+   }
+  
+  function keyPressed() {
+  if (key === LEFT_ARROW || key === RIGHT_ARROW || key === UP_ARROW || key === DOWN_ARROW) {
+    isPlaying = true;
+  } */
+
+  instructions();
 }
+
+
+  
