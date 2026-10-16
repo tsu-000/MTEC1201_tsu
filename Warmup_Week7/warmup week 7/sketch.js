@@ -30,7 +30,7 @@ fill (0,0,255);
 circle(width/2, height/2, 100);
  textFont('Courier New');
   textSize(24);
-  text('press mouse to change scene', 35, 55);
+  text('press mouse to change color', 35, 55);
 
 
 }
@@ -41,5 +41,5 @@ fill(255, 0, 0);
 circle(width/2, height/2, 100);
  textFont('Courier New');
   textSize(24);
-  text('press mouse to change scene', 35, 55);
+  text('press mouse to change color', 35, 55);
 }

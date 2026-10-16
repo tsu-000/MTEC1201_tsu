@@ -2,7 +2,7 @@
 
 let cSH = 600;
 let cSW = 800;
-
+let introScene = 0;
 
 
 
@@ -14,6 +14,10 @@ function setup() {
 
 function draw() {
   background(220);
+
+if (introScene == 0){
+  drawIntro();
+}
   bee();
 
 }
@@ -34,4 +38,13 @@ function bee (){
   noStroke();
   fill (255, 239, 119);
   circle (pmouseX, pmouseY, 5);
+}
+
+function drawIntro(){
+  textSize(50);
+  fill(0, 0, 0);
+  textAlign(CENTER);
+  text("Welcome to Bee Game!", cSW/2, cSH/2-100);
+  textSize(30);
+  text("Click to start", cSW/2, cSH/2);
 }
