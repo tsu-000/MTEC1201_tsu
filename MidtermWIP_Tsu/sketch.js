@@ -1,5 +1,5 @@
 
-
+//setting variables 
 let cSH = 600;
 let cSW = 800;
 let introScene = 0;
@@ -7,8 +7,13 @@ let beeX = cSW/4;
 let beeY = cSH/4;
 let flufffont;
 let plantfont;
-let elW = 5;
-let elH = 5;
+let flower;
+let elW1 = 1;
+let elH1 = 1;
+let elW2 = 1;
+let elH2 = 1;
+let elW3 = 1;
+let elH3 = 1;
 let currentTime = 0;
 let fade=255;
 let timer =7000;
@@ -22,6 +27,7 @@ let isPlaying = false;
 function preload() {
   flufffont = loadFont('Fonts/Fluff.ttf');
   plantfont = loadFont('Fonts/Plant.ttf');
+  flower = loadImage('Images/smileflower.png');
 }
 
 
@@ -46,11 +52,12 @@ if (introScene == 1){
 //intro screen code but im having trouble getting it to work properly 
 
 function drawIntro(){
+
   textSize(50);
   fill(0, 0, 0);
   textFont(plantfont);
   textAlign(CENTER);
-  text("GAMETITLE PLACEHOLDER", cSW/2, cSH/2-100);
+  text("POLLINATOR GAME", cSW/2, cSH/2-100);
   textSize(30);
   text("PRESS *S* TO START", cSW/2, cSH/2);
 }
@@ -127,9 +134,9 @@ function bulb (){
   fill (52, 150, 58);
   noStroke();
   ellipseMode(CENTER)
-  ellipse (cSW*3/4,cSH-200,elW,elH);
-  ellipse (cSW*1/4,cSH-200,elW,elH);
-  ellipse (cSW*1/2,cSH-300,elW,elH);
+  ellipse (cSW*3/4,cSH-200,elW1,elH1);
+  ellipse (cSW*1/4,cSH-200,elW2,elH2);
+  ellipse (cSW*1/2,cSH-300,elW3,elH3);
   pop();
 }
 
@@ -164,14 +171,63 @@ function drawGame(){
 
   instructions();
   bulb();
-
-   
-}
-if (mouseX==mousePositionX && mouseY==mousePositionY){
-  mousePositionX= cSW*3/4+-20;
-  mousePositionY= cSH-200+-20;
-  elW += 5;
-  elH += 5;
-}
   
+  if (elW1 == 5 || elH1 == 5){
+    flowerImage1();
+  }
+  if (elW2 == 5 || elH2 == 5){
+    flowerImage2();
+  }
+  if (elW3 == 5 || elH3 == 5){
+    flowerImage3();
+  }
 
+}
+
+
+
+
+//pressing the mouse makes the bulb grow into a funny flower w a smile :)
+function mousePressed() 
+{ if (dist(mouseX, mouseY, cSW*3/4,cSH-200) < 10 ) {
+   elW1 += 3;
+  elH1 += 3;
+}
+ 
+  if (elW1 > 50 || elH1 > 50){ 
+    elW1 = 5;
+    elH1 = 5;
+    
+  }
+
+
+  if (dist(mouseX, mouseY, cSW*1/4,cSH-200) < 10 ) {
+    elW2 += 3;
+    elH2 += 3;
+    }
+     if (elW2 > 50 || elH2 > 50){ 
+      elW2 = 5;
+      elH2 = 5;
+      
+  }
+if (dist(mouseX, mouseY, cSW*1/2,cSH-300) < 10 ) {
+    elW3 += 3;
+    elH3 += 3;  
+}
+  if (elW3 > 50 || elH3 > 50){
+    elW3 = 5;
+    elH3 = 5;
+   
+  }
+
+}
+  //flowers functionified 
+function flowerImage1(){
+  image(flower, cSW*3/4-50, cSH-300, 120, 120);
+}
+function flowerImage2(){
+  image(flower, cSW*1/4-50, cSH-300, 120, 120);
+}
+function flowerImage3(){
+  image(flower, cSW*1/2-50, cSH-400, 120, 120);
+}
