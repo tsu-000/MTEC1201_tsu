@@ -1,29 +1,38 @@
 
 //setting variables 
+//canvas size 
 let cSH = 600;
 let cSW = 800;
+//scene variable 
 let introScene = 0;
+//bee movement variable 
 let beeX = cSW/4;
 let beeY = cSH/4;
+//fonts :D
 let flufffont;
 let plantfont;
+//the smiley flower :))))
 let flower;
+//the bulb sizes
 let elW1 = 1;
 let elH1 = 1;
 let elW2 = 1;
 let elH2 = 1;
 let elW3 = 1;
 let elH3 = 1;
+//time and fade stuff for the instructions
 let currentTime = 0;
 let fade=255;
 let timer =7000;
 let fadeAmount = 1;
-let mousePositionX;
-let mousePositionY;
-let isPlaying = false;
+//the wincons
+let winflower1 = false;
+let winflower2 = false; 
+let winflower3 = false;
 
 
 
+//loading all the fonts and pictures :3
 function preload() {
   flufffont = loadFont('Fonts/Fluff.ttf');
   plantfont = loadFont('Fonts/Plant.ttf');
@@ -38,7 +47,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(190, 242, 176);
 
 if (introScene == 0){
   drawIntro();
@@ -46,15 +55,17 @@ if (introScene == 0){
 if (introScene == 1){
   drawGame();
 }
- 
+
+if (winflower1 == true && winflower2 == true && winflower3 == true){
+  winscreen();
+}
 }
 
-//intro screen code but im having trouble getting it to work properly 
-
+//intro screen function
 function drawIntro(){
 
   textSize(50);
-  fill(0, 0, 0);
+  fill(255, 145, 240);
   textFont(plantfont);
   textAlign(CENTER);
   text("POLLINATOR GAME", cSW/2, cSH/2-100);
@@ -62,12 +73,24 @@ function drawIntro(){
   text("PRESS *S* TO START", cSW/2, cSH/2);
 }
 
+//all the keypressed stuff I also have to reset variables after the reset
 function keyPressed() {
   if (key === 's') {
     introScene = 1;
   }
+  if (key === 'r') {
+    introScene = 0;
+    winflower1 = false;
+    winflower2 = false;
+    winflower3 = false;
+    elW1 = 1;
+    elH1 = 1;
+    elW2 = 1;
+    elH2 = 1;
+    elW3 = 1;
+    elH3 = 1;
 } 
-
+}
 
 function bee (){
   //this arrowkey movement code was taken from the p5.js reference page for keyIsDown() 
@@ -141,13 +164,14 @@ function bulb (){
 }
 
 
-
+//the intro instructions that fade away after like 7 seconds?? 
+//i tried to experiment w it showing back up after the reset and couldnt rly firgure it out so i just made it so that the instructions fade away and dont come back after the reset
 function instructions(){
   textSize(30);
   currentTime = millis();
   push();
   textAlign(LEFT);
-  fill(255, 206, 151, fade);
+  fill(239, 213, 56, fade);
   stroke(255,255,255, fade);
   strokeWeight(3);
   textFont(flufffont);
@@ -171,21 +195,33 @@ function drawGame(){
 
   instructions();
   bulb();
-  
+  //i took the like true false to make the winscreen based on the boolean page on p5js references
   if (elW1 == 5 || elH1 == 5){
     flowerImage1();
+    winflower1 = true;
   }
   if (elW2 == 5 || elH2 == 5){
     flowerImage2();
+    winflower2 = true;
   }
   if (elW3 == 5 || elH3 == 5){
     flowerImage3();
+    winflower3 = true;
   }
 
 }
 
+function winscreen(){
 
-
+  background(255, 239, 119);
+  textAlign(CENTER);
+  textSize(50);
+  fill(168, 116, 219);
+  textFont(plantfont);
+  text("Flowers have grown!", cSW/2, cSH/2-100);
+  text("Press *R* to restart", cSW/2, cSH/2);
+  image(flower, cSW/2-50, cSH/2+50, 120, 120);
+}
 
 //pressing the mouse makes the bulb grow into a funny flower w a smile :)
 function mousePressed() 
@@ -219,6 +255,7 @@ if (dist(mouseX, mouseY, cSW*1/2,cSH-300) < 10 ) {
     elH3 = 5;
    
   }
+
 
 }
   //flowers functionified 
