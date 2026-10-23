@@ -110,8 +110,9 @@ function bee (){
     beeY += 3;
   }
 
+  //i dont exactly remember why i push and pop these but i think i wanted to have them seperate bc it kept on interfering w the instruction text
+  //this is the bee shapes just taken straight from my ss 2
   push();
-
   stroke(132, 202, 235);
   strokeWeight(3);
   fill (171, 249, 255);
@@ -178,6 +179,7 @@ function instructions(){
   text("Use the arrow keys to move the bee around the screen", 50, cSH/2-100);
   text("Click the top of the stem to make the flower grow", 50, cSH/2-150);
   
+  //this is the timer to make the instructions fade away!
   if (currentTime> timer) 
 {
   print(fade);
@@ -210,7 +212,7 @@ function drawGame(){
   }
 
 }
-
+//congratulation u won screen 
 function winscreen(){
 
   background(255, 239, 119);
