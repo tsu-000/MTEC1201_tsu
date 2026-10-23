@@ -25,6 +25,7 @@ let currentTime = 0;
 let fade=255;
 let timer =10000;
 let fadeAmount = 1;
+let startTime = 0;
 //the wincons
 let winflower1 = false;
 let winflower2 = false; 
@@ -77,6 +78,7 @@ function drawIntro(){
 function keyPressed() {
   if (key === 's') {
     introScene = 1;
+    let startTime = millis();
   }
   if (key === 'r') {
     introScene = 0;
@@ -180,7 +182,7 @@ function instructions(){
   text("Click the top of the stem to make the flower grow", 50, cSH/2-150);
   
   //this is the timer to make the instructions fade away!
-  if (currentTime> timer) 
+  if (currentTime - startTime > timer) 
 {
   print(fade);
   print (currentTime);
@@ -192,25 +194,23 @@ function instructions(){
 function drawGame(){
   
   hills();
-  bee();
+  
   stems();
 
   instructions();
   bulb();
   //i took the like true false to make the winscreen based on the boolean page on p5js references
-  if (elW1 == 5 || elH1 == 5){
+  if (winflower1 == true){
     flowerImage1();
-    winflower1 = true;
+    
   }
-  if (elW2 == 5 || elH2 == 5){
+  if (winflower2 == true){
     flowerImage2();
-    winflower2 = true;
   }
-  if (elW3 == 5 || elH3 == 5){
+  if (winflower3 == true ){
     flowerImage3();
-    winflower3 = true;
   }
-
+bee();
 }
 //congratulation u won screen 
 function winscreen(){
@@ -227,35 +227,35 @@ function winscreen(){
 
 //pressing the mouse makes the bulb grow into a funny flower w a smile :)
 function mousePressed() 
-{ if (dist(mouseX, mouseY, cSW*3/4,cSH-200) < 10 ) {
+{ if (dist(mouseX, mouseY, cSW*3/4,cSH-200) < 10 && winflower1 == false && dist(beeX,beeY,mouseX,mouseY) < 50) {
    elW1 += 3;
   elH1 += 3;
 }
  
   if (elW1 > 50 || elH1 > 50){ 
+    winflower1 = true;
     elW1 = 5;
     elH1 = 5;
-    
   }
 
 
-  if (dist(mouseX, mouseY, cSW*1/4,cSH-200) < 10 ) {
+  if (dist(mouseX, mouseY, cSW*1/4,cSH-200) < 10 &&winflower2 == false && dist(beeX,beeY,mouseX,mouseY) < 50) {
     elW2 += 3;
     elH2 += 3;
     }
      if (elW2 > 50 || elH2 > 50){ 
+      winflower2 = true;
       elW2 = 5;
       elH2 = 5;
-      
   }
-if (dist(mouseX, mouseY, cSW*1/2,cSH-300) < 10 ) {
+if (dist(mouseX, mouseY, cSW*1/2,cSH-300) < 10 && winflower3 == false && dist(beeX,beeY,mouseX,mouseY) < 50) {
     elW3 += 3;
     elH3 += 3;  
 }
   if (elW3 > 50 || elH3 > 50){
+    winflower3 = true;
     elW3 = 5;
     elH3 = 5;
-   
   }
 
 
