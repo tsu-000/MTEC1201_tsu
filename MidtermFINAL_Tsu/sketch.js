@@ -23,7 +23,7 @@ let elH3 = 1;
 //time and fade stuff for the instructions
 let currentTime = 0;
 let fade=255;
-let timer =7000;
+let timer =10000;
 let fadeAmount = 1;
 //the wincons
 let winflower1 = false;
@@ -171,7 +171,7 @@ function instructions(){
   currentTime = millis();
   push();
   textAlign(LEFT);
-  fill(239, 213, 56, fade);
+  fill(0,0,0, fade);
   stroke(255,255,255, fade);
   strokeWeight(3);
   textFont(flufffont);
