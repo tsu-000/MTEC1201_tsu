@@ -79,6 +79,7 @@ function keyPressed() {
   if (key === 's') {
     introScene = 1;
     let startTime = millis();
+    currentTime = startTime;
   }
   if (key === 'r') {
     introScene = 0;
@@ -178,7 +179,7 @@ function instructions(){
   stroke(255,255,255, fade);
   strokeWeight(3);
   textFont(flufffont);
-  text("Use the arrow keys to move the bee around the screen", 50, cSH/2-100);
+  text("Use the arrow keys to move the bee to the stems", 50, cSH/2-100);
   text("Click the top of the stem to make the flower grow", 50, cSH/2-150);
   
   //this is the timer to make the instructions fade away!
